@@ -20,7 +20,7 @@ int main(void)
 	lua_State *L = luaL_newstate();
 	luaL_openlibs(L);
 
-	char* sname = "vals.lua";
+	char* sname = "vars.lua";
 	call_lua(L, sname);
 	// Access to lua script
 	lua_getglobal(L, "NAME");
