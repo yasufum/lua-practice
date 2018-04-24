@@ -1,4 +1,4 @@
 function add(x, y)
-	print("Received x: " .. x .. ", y: " .. y .. " !")
+	print("(lua) Received x: " .. x .. ", y: " .. y .. " from C.")
 	return x + y
 end

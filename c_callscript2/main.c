@@ -33,7 +33,7 @@ int main(void)
 	}
 	// calclate
 	if (lua_isnumber(L, -1)) {
-		printf("Result is %llu\n", lua_tointeger(L, -1));
+		printf("(C) result: x + y = %llu\n", lua_tointeger(L, -1));
 		lua_pop(L, 1);
 	}
 
