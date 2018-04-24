@@ -64,6 +64,48 @@ Stack[ 2] type:number, value:10.500000
 Stack[ 1] type:boolean, value:TRUE
 ```
 
+### c_table
+- CからLuaのスタックにkey-valueペアを格納するサンプル
+- ペアの集合はtableと呼ばれるオブジェクトに格納される(分かりにくい、、、)
+  - 最初に`lua_newtable()`でスタックにtableを作成
+  - keyとvalueを順にスタックに積み`lua_settable()`でtableに格納
+  - 値をtableから取り出す時は、keyをスタックに積み`lua_gettable()`で取り出し
+  - `lua_setfield()`を使うとスタックにkeyを積まなくて良く、引数で指定でいる(ただしkeyは文字列のみ)
+  - `lua_getfield()`もスタックにkeyを積まなくて良い
+
+```sh
+$ cd ..
+$ cd c_table/
+$ make
+gcc -Wall -c main.c
+gcc -Wall -c dump_stack.c
+gcc -o ctable -llua main.o dump_stack.o
+$ ./ctable
+Do stacking ...
+
+Create new table and push a key-value pair
+Stack[ 5] type:string, value:hello hello
+Stack[ 4] type:number, value:11.000000
+Stack[ 3] type:string, value:hello
+Stack[ 2] type:number, value:10.000000
+Stack[ 1] type:table, value:table
+
+Move the pair from stack to table
+Stack[ 1] type:table, value:table
+
+Add another pair, {"key", "world"} from stack
+Stack[ 1] type:table, value:table
+
+Get value of key:11 to top of stack
+Stack[ 2] type:string, value:hello hello
+Stack[ 1] type:table, value:table
+
+Get value of key:"key" to top of stack
+Stack[ 3] type:string, value:world
+Stack[ 2] type:string, value:hello hello
+Stack[ 1] type:table, value:table
+```
+
 ### c_callscript1
 - CからLuaスクリプトで定義された値を取得、使用する
 - makeを実行して生成された`call-lua`を実行する
