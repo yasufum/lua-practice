@@ -23,7 +23,7 @@ function age_daemon(by, bm, bd)
 end
 
 function main()
-  -- He was born on Nov. 10th, 98038 AC actually, but born in 1962 in
+  -- He was born on Nov. 10th, 98038 BC actually, but born in 1962 in
   -- the human world!
   k_name = "Daemon Kogure"
   k_age = age_daemon(1962, 11, 10)
