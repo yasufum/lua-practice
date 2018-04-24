@@ -24,15 +24,26 @@ int main(void)
 	call_lua(L, sname);
 	// Access to lua script
 	lua_getglobal(L, "NAME");
-	lua_getglobal(L, "SIZE");
+	lua_getglobal(L, "LEVEL");
+	lua_getglobal(L, "HP");
+	lua_getglobal(L, "ATTACK");
+	lua_getglobal(L, "SWIFT");
+	lua_getglobal(L, "EXP");
+	lua_getglobal(L, "LOCATION");
 
-	if (!lua_isstring(L, -2) || !lua_isnumber(L, -1)) {
-		printf("Could not get value\n");
+	// Check some variables
+	if (!lua_isstring(L, -7) || !lua_isnumber(L, -6)) {
+		printf("Could not get varibles !\n");
 		return 1;
 	}
 
-	printf("NAME: %s\n", lua_tostring(L, -2));
-	printf("SIZE: %llu\n", lua_tointeger(L, -1));
+	printf("NAME: %s\n", lua_tostring(L, -7));
+	printf("LEVEL: %llu\n", lua_tointeger(L, -6));
+	printf("HP: %llu\n", lua_tointeger(L, -5));
+	printf("ATTACK: %llu\n", lua_tointeger(L, -4));
+	printf("SWIFT: %llu\n", lua_tointeger(L, -3));
+	printf("EXP: %llu\n", lua_tointeger(L, -2));
+	printf("LOCATION: %s\n", lua_tostring(L, -1));
 
 	lua_close(L);
 
