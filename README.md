@@ -24,7 +24,7 @@
 - デーモン小暮閣下の年齢を表示する
 
   ```sh
-  $ cd hello/kogure.lua
+  $ lua hello/kogure.lua
   Daemon Kogure is 100055 years old!
   ```
 
