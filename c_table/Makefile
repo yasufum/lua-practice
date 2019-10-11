@@ -1,7 +1,7 @@
 TARGET = ctable
 CC = gcc
 OBJS = main.o dump_stack.o
-LIBS = -llua
+LIBS = -llua5.3
 CFLAGS = -Wall
 RM = rm
 .SUFFIXES: .c .o
@@ -11,7 +11,7 @@ RM = rm
 
 
 $(TARGET): $(OBJS)
-	$(CC) -o $(TARGET) $(LIBS) $^
+	$(CC) -o $(TARGET) $^ $(LIBS)
 
 .c.o:
 	$(CC) $(CFLAGS) -c $<
