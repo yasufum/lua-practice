@@ -1,7 +1,7 @@
 TARGET = call-lua
 CC = gcc
 OBJS = main.o
-LIBS = -llua
+LIBS = -llua5.3
 CFLAGS = -Wall
 RM = rm
 .SUFFIXES: .c .o
@@ -9,9 +9,8 @@ RM = rm
 .PHONY: all
 	all:$(TARGET)
 
-
 $(TARGET): $(OBJS)
-	$(CC) -o $(TARGET) $(LIBS) $^
+	$(CC) -o $(TARGET) $^ $(LIBS)
 
 .c.o:
 	$(CC) $(CFLAGS) -c $<
