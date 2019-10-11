@@ -7,7 +7,6 @@
 void dumpStack(lua_State* L)
 {
 	int i;
-
 	int stackSize = lua_gettop(L);
 
 	for(i = stackSize; i >= 1; i--) {
@@ -19,11 +18,10 @@ void dumpStack(lua_State* L)
 				printf("%f", lua_tonumber(L, i));
 				break;
 			case LUA_TBOOLEAN:
-				if(lua_toboolean(L, i)) {
+				if(lua_toboolean(L, i))
 					printf("TRUE");
-				} else {
+				else
 					printf("FALSE");
-				}
 				break;
 			case LUA_TSTRING:
 				printf("%s", lua_tostring(L, i));
